@@ -3,16 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:book_app_frontend/main.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.text('book_app_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
-
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.text('book_app_frontend'), findsOneWidget);
+  testWidgets('App starts and shows splash or login screen', (WidgetTester tester) async {
+    await tester.pumpWidget(const BookApp());
+    // The login screen or a loading indicator is expected by default.
+    expect(
+        find.byType(CircularProgressIndicator), findsWidgets
+    );
   });
 }
